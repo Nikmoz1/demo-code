@@ -1,0 +1,22 @@
+<div class="upload-file-container">
+  <div class="upload-file">
+    <label for="upload-file" *ngIf="!selectedFile">Вибрати Файл</label>
+    <input
+      type="file"
+      name="file"
+      id="upload-file"
+      (change)="onFileSelected($event)" />
+    <div class="selected-file" *ngIf="selectedFile">
+      <span class="file-name">{{ selectedFile.name }}</span>
+      <span class="file-size">{{ formatFileSize(selectedFile.size) }}</span>
+    </div>
+    <app-default-button
+      [disable]="!selectedFile"
+      (click)="send()"
+      name="Надіслати"></app-default-button>
+  </div>
+  <app-default-button
+    *ngIf="selectedFile"
+    (click)="cancel()"
+    name="Відмінити"></app-default-button>
+</div>

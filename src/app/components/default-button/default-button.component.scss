@@ -1,0 +1,25 @@
+.default-button {
+  background-color: #3f51b5;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.default-danger-button {
+  background-color: #ac2626;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.default-button[disabled] {
+  opacity: 0.5;
+  cursor: default;
+}
+
+

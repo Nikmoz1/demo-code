@@ -1,0 +1,7 @@
+<app-default-button
+  name="Додати категорію"
+  *ngIf="isTop"
+  (click)="openDialog()"></app-default-button>
+<i class="material-icons add-btn" *ngIf="!isTop" (click)="openDialog()">
+  add
+</i>

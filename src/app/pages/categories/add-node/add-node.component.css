@@ -1,0 +1,27 @@
+/* .top-node {
+  position: absolute;
+  left: 88%;
+  margin-left: 4px;
+} */
+
+
+.add-btn {
+  cursor: pointer;
+  position: fixed;
+  left: 93%;
+  margin-top: -5px;
+}
+/*
+.custom-modal {
+  border-radius: 500px;
+} */
+/* .message-modal {
+    --height: 250px;
+    --max-height: 250px;
+    --border-width: 1px;
+    --border-style: solid;
+    --border-color: var(--ps-page-background2);    
+    align-items: flex-end;
+    --backdrop-opacity: 0.3;    
+    --border-radius: 10px 10px 0px 0px;
+} */

@@ -1,0 +1,60 @@
+<div class="modal-header col-xs-12">
+  <h1>{{ data.isEdit ? 'Редагувати' : 'Додати' }} категорію</h1>
+</div>
+<div class="main_block flex-column col-xs-12 justify-content-center">
+  <app-input-form
+    myClass="col-xs-12"
+    label="Назва категорії"
+    placeholder="Назва категорії"
+    [fGroup]="form"
+    fControlName="name">
+  </app-input-form>
+  <app-input-form
+    myClass="col-xs-12"
+    label="Переклад категорії"
+    placeholder="Переклад категорії"
+    [fGroup]="form"
+    fControlName="nameTranslate">
+  </app-input-form>
+</div>
+<!-- <hr class="col-xs-12" /> -->
+
+<div class="ngx-dropzone col-xs-12">
+  <label for="fileInput" class="ngx-dropzone-label">
+    <span class="ngx-dropzone-icon">+</span>
+    <span class="ngx-dropzone-text" *ngIf="!imageUrl"
+      >Натисніть сюди щоб додати фото категорії</span
+    >
+  </label>
+  <input
+    id="fileInput"
+    type="file"
+    (change)="onFileChange($event)"
+    accept="image/*" />
+  <div class="preview" *ngIf="imageUrl">
+    <img [src]="checkImage(imageUrl)" alt="Image Preview" />
+  </div>
+</div>
+<div class="buttons">
+  <app-default-button
+    myClass="default-danger-button"
+    name="Відмінити"
+    (click)="onNoClick()"></app-default-button>
+  <app-default-button
+    class="create_button"
+    [name]="data.isEdit ? 'Редагувати' : 'Створити'"
+    (click)="mutateClick()"></app-default-button>
+</div>
+<!-- <hr class="" /> -->
+<!-- </div>
+<div mat-dialog-actions>
+  <button mat-button color="warn" (click)="onNoClick()">No Thanks</button>
+  <button
+    mat-stroked-button
+    color="primary"
+    [disabled]="!data.name || !imageUrl"
+    (click)="onEditClick()"
+    class="modal-button">
+    {{ data.Component }}
+  </button> -->
+<!-- </div> -->

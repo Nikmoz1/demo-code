@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  background-color: #f9f9f9;
+  position: fixed;
+  left: 250px; /* Set left property to width of sidebar */
+  width: calc(100vw - 250px); /* Calculate width as 100% of viewport width minus width of sidebar */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  justify-content: space-between;
+  z-index: 999; /* Add a high z-index value to ensure the header appears above other elements */
+  .category-title {
+    transition: opacity 0.3s;
+    cursor: pointer;
+    padding-left: 20px;
+  }
+  .toogle-menu {
+    display: flex;
+  }
+
+  .category-title:hover {
+    opacity: 0.5;
+  }
+}

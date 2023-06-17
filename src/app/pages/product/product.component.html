@@ -1,0 +1,62 @@
+<div class="content">
+  <div class="header">
+    <div class="toogle-menu">
+      <h1 class="category-title" [routerLink]="['/products']">Товари</h1>
+      <h1 class="category-title" [routerLink]="['/associations']">Асоціації</h1>
+    </div>
+    <div class="button-container">
+      <app-default-button
+        routerLink="/products/create"
+        name="Створити"></app-default-button>
+      <app-default-button
+        name="Загрузити таблицю"
+        (click)="uploadTable()"></app-default-button>
+    </div>
+  </div>
+  <div class="table-container">
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Код товару</th>
+          <th>Назва</th>
+          <th>Ціна</th>
+          <th>Кількість</th>
+          <th>Дії</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of ps.products">
+          <td>
+            <img
+              [src]="
+                product.images[0]
+                  ? product.images[0].image
+                  : 'assets/defaultProduct.jpeg'
+              "
+              alt=""
+              style="width: 50px" />
+          </td>
+          <!-- <td>{{ product.id }}</td> -->
+          <td>{{ product.productCode }}</td>
+          <td>{{ product.productNameUkr }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>
+            <a routerLink="/products/{{ product.id }}">Редагувати</a> /
+            <a href="#">Видалити</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-container">
+    <mat-paginator
+      #paginator
+      [length]="ps.productsTotal"
+      [pageSize]="ps.filter.size"
+      [pageSizeOptions]="[10, 25, 50, 100]"
+      showFirstLastButtons
+      (page)="onPageChanged($event)"></mat-paginator>
+  </div>
+</div>

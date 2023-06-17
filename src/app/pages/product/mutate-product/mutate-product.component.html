@@ -1,0 +1,165 @@
+<div class="header">
+  <h1 class="category-title">
+    {{ productId ? 'Редагувати' : 'Створити' }} продукт
+  </h1>
+</div>
+<div class="content">
+  <form [formGroup]="form">
+    <div class="block_1">
+      <app-select-form
+        label="Виберіть категорію"
+        [options]="options"
+        myClass="col-xs-4"
+        [fGroup]="form"
+        fControlName="categoryId"></app-select-form>
+
+      <app-input-form
+        label="Назва товару"
+        placeholder="Введіть назву товару"
+        [fGroup]="form"
+        myClass="col-md-3"
+        fControlName="productNameUkr"></app-input-form>
+
+      <app-input-form
+        label="Переклад назви"
+        placeholder="Переклад назви товару"
+        myClass="col-md-3"
+        [fGroup]="form"
+        fControlName="productNameRu"></app-input-form>
+
+      <app-input-form
+        label="Код товару"
+        placeholder="Введіть код товару"
+        myClass="col-md-2"
+        [fGroup]="form"
+        fControlName="productCode"></app-input-form>
+      <app-input-form
+        label="Ціна"
+        placeholder="Ціна товару"
+        myClass="col-xs-3"
+        type="number"
+        [fGroup]="form"
+        fControlName="price"></app-input-form>
+
+      <app-input-form
+        label="Кількість"
+        placeholder="Кількість товару"
+        myClass="col-xs-3"
+        type="number"
+        [fGroup]="form"
+        fControlName="quantity"></app-input-form>
+      <hr class="col-xs-12" style="height: 1px" />
+      <div class="block_1_discount">
+        <app-input-form
+          label="Знижка"
+          placeholder="Знижка на товар"
+          myClass="col-xs-3"
+          type="number"
+          [fGroup]="form"
+          fControlName="discount"></app-input-form>
+        <app-datepicker-form
+          placeholder="Початок знижки"
+          myClass="col-xs-3"
+          [fGroup]="form"
+          fControlName="discountPeriodFrom"></app-datepicker-form>
+        <app-datepicker-form
+          placeholder="Кінець знижки"
+          myClass="col-xs-3"
+          [fGroup]="form"
+          fControlName="discountPeriodTo"></app-datepicker-form>
+      </div>
+      <hr class="col-xs-12" />
+    </div>
+    <div class="block_2">
+      <app-textarea-form
+        label="Опис товару (Укр)"
+        placeholder="Опис товару (Укр)"
+        myClass="col-xs-12"
+        [fGroup]="form"
+        fControlName="descriptionUkr">
+      </app-textarea-form>
+
+      <app-textarea-form
+        label="Опис товару (Рос)"
+        placeholder="Опис товару (Рос)"
+        myClass="col-xs-12"
+        [fGroup]="form"
+        fControlName="descriptionRu"></app-textarea-form>
+
+      <hr class="col-xs-12" />
+    </div>
+    <div class="block_3">
+      <div class="block_3_video">
+        <ngx-dropzone (change)="handleFileInput($event)" accept="video/*">
+          <ngx-dropzone-label>Додати відео</ngx-dropzone-label>
+          <ngx-dropzone-video-preview
+            *ngIf="video"
+            [file]="video"></ngx-dropzone-video-preview>
+        </ngx-dropzone>
+      </div>
+      <div class="block_3_photo">
+        <label for="fileInput" class="label-input">
+          <i class="material-icons add-btn"> add </i>
+        </label>
+        <input
+          id="fileInput"
+          type="file"
+          (change)="onFileSelected($event)"
+          [multiple]="true"
+          accept="image/*" />
+        <div class="image-list" dragula="VAMPIRES" [(dragulaModel)]="images">
+          <div class="image" *ngFor="let image of images">
+            <i class="material-icons delete-btn" (click)="removeImage(image)"
+              >delete_outline</i
+            >
+            <img [src]="image" alt="Image Preview" />
+          </div>
+        </div>
+      </div>
+      <hr class="col-xs-12" />
+
+      <div class="block_3_text">
+        <app-input-form
+          label="Бренд товару"
+          placeholder="Введіть бренд товару"
+          myClass="col-xs-5"
+          [fGroup]="form"
+          fControlName="brand"></app-input-form>
+        <app-input-form
+          label="Країна виробник"
+          placeholder="Введіть країну виробника"
+          myClass="col-xs-5"
+          [fGroup]="form"
+          fControlName="brandCountry"></app-input-form>
+        <app-input-form
+          label="Вага"
+          placeholder="Вага товару"
+          myClass="col-xs-3"
+          type="number"
+          [fGroup]="form"
+          fControlName="weight"></app-input-form>
+      </div>
+      <app-input-form
+        label="Розмір в упаковці"
+        placeholder="Розмір товару в упаковці"
+        myClass="col-xs-4"
+        type="number"
+        [fGroup]="form"
+        fControlName="packageSize"></app-input-form>
+
+      <app-input-form
+        label="Розмір без упаковки"
+        placeholder="Розмір товару без упаковки"
+        myClass="col-xs-4"
+        type="number"
+        [fGroup]="form"
+        fControlName="productSize"></app-input-form>
+    </div>
+  </form>
+  <div class="footer">
+    <app-default-button
+      class="create_button"
+      name="{{ productId ? 'Редагувати' : 'Створити' }}"
+      (click)="submitForm()"></app-default-button>
+  </div>
+</div>
